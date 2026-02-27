@@ -1,25 +1,6 @@
-# my_app - macOS 打包指南
+# pyencrypt-client
 
-## 快速开始
-
-### 1. 推送代码到 GitHub
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin <your-repo-url>
-git push -u origin main
-```
-
-### 2. 自动构建
-推送后，GitHub Actions 会自动构建 macOS 可执行文件。
-
-### 3. 下载可执行文件
-1. 进入 GitHub 仓库页面
-2. 点击 "Actions" 标签
-3. 选择最新的工作流运行
-4. 在 "Artifacts" 部分下载 `my_app-macos`
+Python 加密工具客户端 - macOS 版本
 
 ## 在 macOS 上运行
 
@@ -27,25 +8,30 @@ git push -u origin main
 
 ```bash
 # 解压下载的文件
-unzip my_app-macos.zip
+unzip pyencrypt-client-macos.zip
 
 # 赋予执行权限
-chmod +x my_app
+chmod +x pyencrypt-client
 
 # 移除苹果安全隔离（首次运行需要）
-xattr -d com.apple.quarantine my_app
+xattr -d com.apple.quarantine pyencrypt-client
 
 # 运行程序
-./my_app
+./pyencrypt-client
 ```
 
-## 手动触发构建
+## 使用方法
 
-在 GitHub 仓库页面：
-1. 点击 "Actions"
-2. 选择 "Build macOS Executable"
-3. 点击 "Run workflow"
+```bash
+# 查看帮助
+./pyencrypt-client
 
-## 依赖管理
+# 初始化配置
+./pyencrypt-client init
 
-将你的 Python 依赖添加到 `requirements.txt` 文件中。
+# 检查服务状态
+./pyencrypt-client status --base-url http://your-server:5000
+
+# 加密文件
+./pyencrypt-client encrypt-file --file main.py --output ./dist/
+```
